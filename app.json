@@ -1,8 +1,6 @@
 {
-  "name": "Heroku Rails sample app",
-  "description": "A barebones Rails app, which can easily be deployed to Heroku",
+  "name": "Example Name",
+  "description": "An example app.json for heroku-docker",
   "image": "heroku/ruby",
-  "repository": "https://github.com/heroku/ruby-getting-started",
-  "keywords": ["ruby", "rails" ],
-  "addons": [ "heroku-postgresql" ]
+  "addons": []
 }
