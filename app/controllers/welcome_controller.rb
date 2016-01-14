@@ -1,8 +1,13 @@
 class WelcomeController < ApplicationController
-
-  # GET /welcome
-  def index
-    sleep 5
+  def hi
+    respond_to do |format|
+      format.json do
+        render json: {
+          status: "ok",
+          message: "Success!",
+        }
+      end
+    end
   end
 
 end
