@@ -1,5 +1,8 @@
 class WelcomeController < ApplicationController
   def hi
+    json_request = JSON.parse(request.body.read)
+    require 'pp'
+    pp json_request
     res = sp_client.accounts.get 'https://api.stormpath.com/v1/accounts/BR5Wfj3SzFKmwAQTS8SLK'
     count = res.custom_data[:foobar]
     res.custom_data[:foobar] += 1
@@ -10,7 +13,11 @@ class WelcomeController < ApplicationController
           status: "ok",
           message: "Success!",
           count: count,
+          echo: json_request,
         }
+      end
+      format.all do
+        render nothing: true
       end
     end
   end
