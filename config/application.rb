@@ -4,6 +4,11 @@ require "action_controller/railtie"
 require "rails/test_unit/railtie"
 require 'sprockets/railtie'
 require 'stormpath-sdk'
+require 'aws-sdk'
+
+Aws.config.update({
+  region: 'ap-northeast-1',
+})
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

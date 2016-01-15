@@ -7,6 +7,7 @@ class WelcomeController < ApplicationController
     count = res.custom_data[:foobar]
     res.custom_data[:foobar] += 1
     res.custom_data.save
+    publish_message("The current count is #{count}.")
     respond_to do |format|
       format.json do
         render json: {
@@ -30,5 +31,16 @@ class WelcomeController < ApplicationController
          id: ENV['STORMPATH_ID'], secret: ENV['STORMPATH_SECRET'],
        }
     })
+  end
+
+  def publish_message(message)
+    sns_client.publish({
+      topic_arn: ENV['AWS_SNS_TOPIC'],
+      message: message,
+    })
+  end
+
+  def sns_client
+    Aws::SNS::Client.new
   end
 end
