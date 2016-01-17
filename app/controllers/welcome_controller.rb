@@ -28,7 +28,7 @@ class WelcomeController < ApplicationController
   def sp_client
     Stormpath::Client.new({
        api_key: {
-         id: ENV['STORMPATH_ID'], secret: ENV['STORMPATH_SECRET'],
+         id: ENV['STORMPATH_CLIENT_APIKEY_ID'], secret: ENV['STORMPATH_CLIENT_APIKEY_SECRET'],
        }
     })
   end
